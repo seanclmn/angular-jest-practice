@@ -14,19 +14,19 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  test('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'practice'`, () => {
+  test(`should have as title 'practice'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('not practice');
   });
 
-  it('should render title', () => {
+  test('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
@@ -41,13 +41,15 @@ describe('AppComponent', () => {
 
   })
 
-  it("should multiply numbers",()=>{
+  test.each([1,2,3,4,5,5,6,7])("should multiply numbers",(elem)=>{
     const fixture = TestBed.createComponent(AppComponent);
     const component = fixture.componentInstance
-    expect(component.multiply(3,4)).toBe(12)
+    
+    expect(component.multiply(4,elem)).toBe(4*elem)
+    
   })
 
-  it.only("should return service variable",()=>{
+  test("should return service variable",()=>{
     const fixture = TestBed.createComponent(AppComponent);
     const component = fixture.componentInstance
     expect((component.serviceVariable())).toBe("variable")
